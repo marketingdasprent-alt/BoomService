@@ -1,28 +1,6 @@
-import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-const STORAGE_KEY = 'boomservice-cookie-consent'
-
-export default function CookieConsent() {
-  const [visivel, setVisivel] = useState(false)
-
-  useEffect(() => {
-    try {
-      if (!localStorage.getItem(STORAGE_KEY)) setVisivel(true)
-    } catch {
-      /* armazenamento indisponível */
-    }
-  }, [])
-
-  function decidir(valor) {
-    try {
-      localStorage.setItem(STORAGE_KEY, valor)
-    } catch {
-      /* armazenamento indisponível */
-    }
-    setVisivel(false)
-  }
-
+export default function CookieConsent({ visivel, decidir }) {
   if (!visivel) return null
 
   return (
