@@ -324,14 +324,9 @@ button { font: inherit; }
 .service {
   display: grid;
   grid-template-columns: 7fr 5fr;
+  align-items: stretch;
   gap: 40px;
-  align-items: center;
-  border: 1px solid transparent;
-  border-radius: var(--radius);
-  padding: 12px;
-  transition: border-color 0.3s ease;
 }
-.service:hover, .service:focus-within { border-color: rgba(124, 58, 237, 0.5); }
 .service--reverse { grid-template-columns: 5fr 7fr; }
 .service--reverse .service__media { order: 2; }
 .service--reverse .service__body { order: 1; }
