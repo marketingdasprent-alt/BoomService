@@ -45,9 +45,17 @@
  *   acima dele; um parágrafo de introdução fica sempre a
  *   `--space-title-to-lead` do título acima dele. Isto aplica-se ao Hero,
  *   a `.about`, a `.contact` e a qualquer secção nova do mesmo padrão.
- * - O conteúdo do site é predominantemente alinhado à esquerda (direção
- *   editorial/assimétrica adotada nas Rondas 1-2): usar `text-align:center`
- *   é a exceção, não o padrão, e só quando houver uma razão específica.
+ * - Centralização por tipo de conteúdo, não por gosto pontual:
+ *   - Unidade tipo "ícone + rótulo curto + valor" (sem parágrafo de prosa),
+ *     como os cartões de contacto: centra sempre, ícone incluído
+ *     (classe `.card--center`).
+ *   - Texto corrido (parágrafos, listas de bullets com frase completa,
+ *     corpo dos blocos de Serviços/Motoristas): fica sempre alinhado à
+ *     esquerda, é mais legível em várias linhas.
+ *   - Navegação em coluna (rodapé): alinhada à esquerda em grelha
+ *     multi-coluna (desktop); quando a grelha colapsa para 1 coluna
+ *     (`.footer--stacked`, <700px), toda a coluna centra, incluindo os
+ *     títulos de navegação — é o padrão esperado de rodapé empilhado.
  */
 
 * { box-sizing: border-box; }
@@ -417,7 +425,15 @@ button { font: inherit; }
 .contact__intro p { margin-top: var(--space-title-to-lead); max-width: 40ch; color: var(--muted); line-height: 1.6; }
 .contact__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
 .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--border); background: var(--surface); border-radius: var(--radius); overflow: hidden; }
-.contact-grid li { padding: 22px; border-left: 1px solid var(--border); }
+/* .card--center: ícone + rótulo curto + valor, sem prosa, centra sempre (ver regra no topo do ficheiro). */
+.contact-grid li {
+  padding: 22px;
+  border-left: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
 .contact-grid li:first-child { border-left: none; }
 .contact-grid svg { width: 20px; height: 20px; color: var(--magenta); }
 .contact-grid h3 { margin-top: 12px; font-size: 0.9rem; font-weight: 700; }
@@ -445,7 +461,14 @@ button { font: inherit; }
 .footer nav a:hover { color: var(--text); }
 .footer__bottom { margin-top: 40px; padding: 24px 0; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
 
-@media (max-width: 700px) { .footer__grid { grid-template-columns: 1fr; gap: 28px; } }
+/* Rodapé empilhado (1 coluna): centra tudo, é o padrão esperado quando não há colunas lado a lado para ancorar o alinhamento à esquerda. */
+@media (max-width: 700px) {
+  .footer__grid { grid-template-columns: 1fr; gap: 28px; text-align: center; }
+  .footer__brandname { justify-content: center; }
+  .footer__brand p { margin-inline: auto; }
+  .footer nav ul { align-items: center; }
+  .footer__bottom { text-align: center; }
+}
 
 /* ---------- Cookie consent ---------- */
 .cookie-consent {
