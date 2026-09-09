@@ -1,15 +1,18 @@
 # BoomService — Landing Page
 
-Landing page (em construção) da **BoomService** — empresa de mobilidade e TVDE.
-Áreas: **Mobility | Rent a Car | Fleet**.
+Site institucional da **BoomService** — empresa de mobilidade e TVDE em Portugal.
+Áreas: **Mobility (TVDE) | Rent a Car | Fleet**.
 
-Construída em **React + Vite**.
+Construído em **React + Vite**, com **React Router** para as páginas legais e
+**lucide-react** para os ícones.
 
-## Secções
-- **Hero** com aviso de "site em construção"
-- **Sobre Nós**
-- **Serviços** (Mobility, Rent a Car, Fleet)
-- **Contactos** (email, telefone, localização)
+## Páginas e secções
+
+- `/` — Hero, Sobre Nós, Serviços (Mobility, Rent a Car, Fleet), Trabalhe como
+  motorista, Como funciona, Contactos.
+- `/privacidade`, `/termos`, `/cookies` — páginas legais. O conteúdo é um
+  rascunho marcado como placeholder: precisa de revisão jurídica antes de
+  publicar, já que a empresa opera em Portugal e está sujeita ao RGPD.
 
 ## Como correr
 
@@ -21,6 +24,16 @@ npm run preview  # pré-visualizar a build de produção
 ```
 
 ## Personalizar
-- **Contactos reais:** editar `src/App.jsx` (email/telefone na secção `Contact`).
-- **Cores da marca:** variáveis CSS no topo de `src/index.css` (`--violet`, `--purple`, `--magenta`).
-- **Textos e serviços:** array `SERVICES` e secções em `src/App.jsx`.
+
+- **Contactos reais:** email/telefone/localização estão repetidos em
+  `src/pages/Home.jsx` (secção Contactos) e nos `mailto:`/`tel:` do Hero e do
+  Header — são placeholders (`geral@boomservice.pt`, `+351 900 000 000`,
+  "Lisboa, Portugal") a confirmar antes de publicar.
+- **Cores da marca:** variáveis CSS no topo de `src/index.css` (`--violet`,
+  `--purple`, `--magenta`, `--bg`, `--surface`).
+- **Textos e serviços:** arrays `SERVICOS`, `CAMINHOS_MOTORISTA` e `PASSOS` em
+  `src/pages/Home.jsx`.
+- **Logótipo:** `src/assets/logo.png` (usado no Header e Footer) e
+  `public/favicon.png` (favicon do site).
+- **Páginas legais:** conteúdo em `src/pages/Privacy.jsx`, `Terms.jsx` e
+  `Cookies.jsx`, dentro do wrapper `src/components/LegalLayout.jsx`.
